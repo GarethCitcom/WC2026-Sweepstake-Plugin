@@ -25,7 +25,7 @@ function wc2026_page_staff() {
 		isset( $_POST['wc2026_staff_nonce'] ) &&
 		wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['wc2026_staff_nonce'] ) ), 'wc2026_save_staff' )
 	) {
-		$staff_id = (int) ( $_POST['staff_id'] ?? 0 );
+		$staff_id = isset( $_POST['staff_id'] ) ? absint( wp_unslash( $_POST['staff_id'] ) ) : 0;
 		$photo_id = isset( $_POST['photo_id'] ) ? (int) $_POST['photo_id'] : null;
 		$colour   = isset( $_POST['colour'] ) ? sanitize_hex_color( wp_unslash( $_POST['colour'] ) ) : null;
 
@@ -49,7 +49,7 @@ function wc2026_page_staff() {
 		isset( $_POST['wc2026_upsert_nonce'] ) &&
 		wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['wc2026_upsert_nonce'] ) ), 'wc2026_upsert_staff' )
 	) {
-		$staff_id    = (int) ( $_POST['staff_id'] ?? 0 );
+		$staff_id    = isset( $_POST['staff_id'] ) ? absint( wp_unslash( $_POST['staff_id'] ) ) : 0;
 		$name        = sanitize_text_field( wp_unslash( $_POST['staff_name'] ?? '' ) );
 		$colour      = sanitize_hex_color( wp_unslash( $_POST['colour'] ?? '#cccccc' ) ) ?: '#cccccc';
 		$country_ids = isset( $_POST['country_ids'] ) ? array_map( 'absint', (array) $_POST['country_ids'] ) : array();
@@ -76,7 +76,7 @@ function wc2026_page_staff() {
 		isset( $_POST['wc2026_delete_nonce'] ) &&
 		wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['wc2026_delete_nonce'] ) ), 'wc2026_delete_staff' )
 	) {
-		$staff_id = (int) ( $_POST['staff_id'] ?? 0 );
+		$staff_id = isset( $_POST['staff_id'] ) ? absint( wp_unslash( $_POST['staff_id'] ) ) : 0;
 		if ( $staff_id > 0 && WC2026_Staff::delete( $staff_id ) ) {
 			$notice = 'Staff member deleted.';
 		}

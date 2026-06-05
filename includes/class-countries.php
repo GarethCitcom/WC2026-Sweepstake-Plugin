@@ -8,6 +8,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
 /**
  * Class WC2026_Countries
@@ -107,9 +108,8 @@ class WC2026_Countries {
 		$ids      = array_map( 'absint', $country_ids );
 		$holders  = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
 		$wpdb->query(
-			// phpcs:ignore WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
 			$wpdb->prepare(
-				"UPDATE {$wpdb->prefix}wc_countries SET staff_id = %d WHERE id IN ($holders)",
+				"UPDATE {$wpdb->prefix}wc_countries SET staff_id = %d WHERE id IN ($holders)", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 				array_merge( array( $staff_id ), $ids )
 			)
 		);

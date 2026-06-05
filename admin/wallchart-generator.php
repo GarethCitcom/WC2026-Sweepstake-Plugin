@@ -71,6 +71,8 @@ function wc2026_handle_wallchart_action() {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>WC2026 Sweepstake — Wall Chart</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<?php // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet ?>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 html, body { margin: 0; padding: 0; background: #edf0f4; }

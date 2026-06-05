@@ -24,7 +24,7 @@ $sf_r       = $wc_data['sf_r'];
 $fin        = $wc_data['fin'];
 $trd        = $wc_data['trd'];
 $all_staff  = $wc_data['all_staff'];
-$site_name  = get_bloginfo( 'name' );
+$site_name  = get_bloginfo('name');
 
 // ── Helpers (all defined before HTML output; guarded against redeclaration) ──
 
@@ -64,18 +64,18 @@ if (! function_exists('wc2026_slot')) :
 			echo '<div class="wc-mnum">M' . (int) $match_num . '</div>';
 		}
 		// Home row.
-		echo '<div class="wc-mteam' . ($is_tbd ? ' wc-tbd' : '') . '" style="border-left:3px solid ' . $home_col . '">';
-		if ($home_flag) echo '<img class="wc-flag-s" src="' . $home_flag . '" alt="" loading="lazy">';
-		if ($home_av)  echo '<img class="wc-av-s" src="' . $home_av . '" alt="">';
-		echo '<span class="wc-tname">' . ($is_tbd ? 'TBD' : $home_name) . '</span>';
-		if ('' !== $home_score) echo '<span class="wc-tscore">' . $home_score . '</span>';
+		echo '<div class="wc-mteam' . ($is_tbd ? ' wc-tbd' : '') . '" style="border-left:3px solid ' . esc_attr($home_col) . '">';
+		if ($home_flag) echo '<img class="wc-flag-s" src="' . esc_url($home_flag) . '" alt="" loading="lazy">';
+		if ($home_av)  echo '<img class="wc-av-s" src="' . esc_url($home_av) . '" alt="">';
+		echo '<span class="wc-tname">' . ($is_tbd ? 'TBD' : esc_html($home_name)) . '</span>';
+		if ('' !== $home_score) echo '<span class="wc-tscore">' . esc_html($home_score) . '</span>';
 		echo '</div>';
 		// Away row.
-		echo '<div class="wc-mteam' . ($is_tbd ? ' wc-tbd' : '') . '" style="border-left:3px solid ' . $away_col . '">';
-		if ($away_flag) echo '<img class="wc-flag-s" src="' . $away_flag . '" alt="" loading="lazy">';
-		if ($away_av)  echo '<img class="wc-av-s" src="' . $away_av . '" alt="">';
-		echo '<span class="wc-tname">' . ($is_tbd ? 'TBD' : $away_name) . '</span>';
-		if ('' !== $away_score) echo '<span class="wc-tscore">' . $away_score . '</span>';
+		echo '<div class="wc-mteam' . ($is_tbd ? ' wc-tbd' : '') . '" style="border-left:3px solid ' . esc_attr($away_col) . '">';
+		if ($away_flag) echo '<img class="wc-flag-s" src="' . esc_url($away_flag) . '" alt="" loading="lazy">';
+		if ($away_av)  echo '<img class="wc-av-s" src="' . esc_url($away_av) . '" alt="">';
+		echo '<span class="wc-tname">' . ($is_tbd ? 'TBD' : esc_html($away_name)) . '</span>';
+		if ('' !== $away_score) echo '<span class="wc-tscore">' . esc_html($away_score) . '</span>';
 		echo '</div>';
 	}
 endif; // wc2026_slot
@@ -141,7 +141,7 @@ if (! function_exists('wc2026_render_group_card')) :
 			$sv  = (object) array('name' => $c->staff_name, 'slug' => $c->staff_slug, 'colour' => $c->staff_colour, 'photo' => $c->staff_photo);
 			$av  = $c->staff_name ? WC2026_Staff::get_avatar_url($sv, 'thumbnail') : '';
 			echo '<tr class="' . esc_attr($cls) . '">';
-			echo '<td class="wc-td-pos">' . ($pos + 1) . '</td>';
+			echo '<td class="wc-td-pos">' . (int) ($pos + 1) . '</td>';
 			echo '<td class="wc-td-staff-color">';
 			if ($c->staff_colour) {
 				echo '<span class="wc-bar" style="background:' . esc_attr($c->staff_colour) . '"></span>';
@@ -260,6 +260,10 @@ if (! $css_done) :
 			font-size: 40px;
 			line-height: 1;
 			text-align: right;
+		}
+
+		.wc-header-trophy.left {
+			text-align: left;
 		}
 
 		/* Staff key */
@@ -770,7 +774,10 @@ if (! $css_done) :
 			.wc2026-chart {
 				font-size: 8px;
 			}
-			.wc2026-zoom-bar { display: none !important; }
+
+			.wc2026-zoom-bar {
+				display: none !important;
+			}
 		}
 
 		@page {
@@ -782,137 +789,138 @@ if (! $css_done) :
 
 <div class="wc2026-chart-zoom-wrap">
 	<div class="wc2026-zoom-bar">
-		<button type="button" class="wc2026-zoom-btn" data-zoom="fit"><?php esc_html_e( 'Fit', 'wc2026-sweepstake' ); ?></button>
+		<button type="button" class="wc2026-zoom-btn" data-zoom="fit"><?php esc_html_e('Fit', 'wc2026-sweepstake'); ?></button>
 		<div class="wc2026-zoom-stepper">
-			<button type="button" class="wc2026-zoom-btn" data-zoom="out" aria-label="<?php esc_attr_e( 'Zoom out', 'wc2026-sweepstake' ); ?>">&#8722;</button>
+			<button type="button" class="wc2026-zoom-btn" data-zoom="out" aria-label="<?php esc_attr_e('Zoom out', 'wc2026-sweepstake'); ?>">&#8722;</button>
 			<span class="wc2026-zoom-level">100%</span>
-			<button type="button" class="wc2026-zoom-btn" data-zoom="in" aria-label="<?php esc_attr_e( 'Zoom in', 'wc2026-sweepstake' ); ?>">+</button>
+			<button type="button" class="wc2026-zoom-btn" data-zoom="in" aria-label="<?php esc_attr_e('Zoom in', 'wc2026-sweepstake'); ?>">+</button>
 		</div>
-		<button type="button" class="wc2026-zoom-btn" data-zoom="reset"><?php esc_html_e( 'Reset', 'wc2026-sweepstake' ); ?></button>
+		<button type="button" class="wc2026-zoom-btn" data-zoom="reset"><?php esc_html_e('Reset', 'wc2026-sweepstake'); ?></button>
 	</div>
 	<div class="wc2026-chart-viewport">
 
-<div class="wc2026-chart">
+		<div class="wc2026-chart">
 
-	<!-- HEADER -->
-	<div class="wc-header">
-		<div class="wc-header-title">
-			<div class="wc-t1"><?php echo esc_html( $site_name ); ?> Sweepstake</div>
-			<div class="wc-t2">World Cup 2026</div>
-			<div class="wc-t3">Wall Chart &amp; Bracket</div>
-		</div>
-		<div class="wc-header-trophy">🏆</div>
-	</div>
-
-	<!-- STAFF KEY -->
-	<div class="wc-staff-key">
-		<span class="wc-staff-key-lbl">Staff:</span>
-		<?php foreach ($all_staff as $s) :
-			$av = WC2026_Staff::get_avatar_url($s, 'thumbnail');
-		?>
-			<div class="wc-staff-key-item" style="border-left-color:<?php echo esc_attr($s->colour); ?>">
-				<img src="<?php echo esc_url($av); ?>" alt="<?php echo esc_attr($s->name); ?>">
-				<span><?php echo esc_html($s->name); ?></span>
+			<!-- HEADER -->
+			<div class="wc-header">
+				<div class="wc-header-trophy left">🏆</div>
+				<div class="wc-header-title">
+					<div class="wc-t1"><?php echo esc_html($site_name); ?> Sweepstake</div>
+					<div class="wc-t2">World Cup 2026</div>
+					<div class="wc-t3">Wall Chart &amp; Bracket</div>
+				</div>
+				<div class="wc-header-trophy">🏆</div>
 			</div>
-		<?php endforeach; ?>
-	</div>
 
-	<!-- LEGEND -->
-	<div class="wc-legend">
-		<span class="wc-legend-item"><span class="wc-legend-dot wc-ldq"></span>Qualifies to R32</span>
-		<span class="wc-legend-item"><span class="wc-legend-dot wc-ldt"></span>Best third-place contender</span>
-		<span class="wc-legend-note">P=Played &nbsp; W=Wins &nbsp; D=Draws &nbsp; L=Losses &nbsp; Pts=Points</span>
-	</div>
-
-	<!-- ROUND LABELS -->
-	<div class="wc-rlabels">
-		<div></div>
-		<div class="wc-rl-inner">
-			<div class="wc-rl-half">
-				<div class="wc-rl-col">R32</div>
-				<div class="wc-rl-col">R16</div>
-				<div class="wc-rl-col">QF</div>
-				<div class="wc-rl-col">SF</div>
+			<!-- STAFF KEY -->
+			<div class="wc-staff-key">
+				<span class="wc-staff-key-lbl">Staff:</span>
+				<?php foreach ($all_staff as $s) :
+					$av = WC2026_Staff::get_avatar_url($s, 'thumbnail');
+				?>
+					<div class="wc-staff-key-item" style="border-left-color:<?php echo esc_attr($s->colour); ?>">
+						<img src="<?php echo esc_url($av); ?>" alt="<?php echo esc_attr($s->name); ?>">
+						<span><?php echo esc_html($s->name); ?></span>
+					</div>
+				<?php endforeach; ?>
 			</div>
-			<div class="wc-rl-fin">Final</div>
-			<div class="wc-rl-half wc-rl-r">
-				<div class="wc-rl-col">SF</div>
-				<div class="wc-rl-col">QF</div>
-				<div class="wc-rl-col">R16</div>
-				<div class="wc-rl-col">R32</div>
+
+			<!-- LEGEND -->
+			<div class="wc-legend">
+				<span class="wc-legend-item"><span class="wc-legend-dot wc-ldq"></span>Qualifies to R32</span>
+				<span class="wc-legend-item"><span class="wc-legend-dot wc-ldt"></span>Best third-place contender</span>
+				<span class="wc-legend-note">P=Played &nbsp; W=Wins &nbsp; D=Draws &nbsp; L=Losses &nbsp; Pts=Points</span>
 			</div>
-		</div>
-		<div></div>
-	</div>
 
-	<!-- MAIN BODY -->
-	<div class="wc-body">
+			<!-- ROUND LABELS -->
+			<div class="wc-rlabels">
+				<div></div>
+				<div class="wc-rl-inner">
+					<div class="wc-rl-half">
+						<div class="wc-rl-col">R32</div>
+						<div class="wc-rl-col">R16</div>
+						<div class="wc-rl-col">QF</div>
+						<div class="wc-rl-col">SF</div>
+					</div>
+					<div class="wc-rl-fin">Final</div>
+					<div class="wc-rl-half wc-rl-r">
+						<div class="wc-rl-col">SF</div>
+						<div class="wc-rl-col">QF</div>
+						<div class="wc-rl-col">R16</div>
+						<div class="wc-rl-col">R32</div>
+					</div>
+				</div>
+				<div></div>
+			</div>
 
-		<!-- LEFT GROUPS A–F -->
-		<div class="wc-gcol">
-			<?php foreach (array('A', 'B', 'C', 'D', 'E', 'F') as $g) :
-				wc2026_render_group_card($g, $standings[$g] ?? array());
-			endforeach; ?>
-		</div>
+			<!-- MAIN BODY -->
+			<div class="wc-body">
 
-		<!-- BRACKET -->
-		<div class="wc-bracket-centre">
-			<div class="wc-bracket-rounds">
+				<!-- LEFT GROUPS A–F -->
+				<div class="wc-gcol">
+					<?php foreach (array('A', 'B', 'C', 'D', 'E', 'F') as $g) :
+						wc2026_render_group_card($g, $standings[$g] ?? array());
+					endforeach; ?>
+				</div>
 
-				<!-- LEFT HALF: R32→R16→QF→SF -->
-				<div class="wc-bhalf">
-					<?php wc2026_round_col($r32_l, 2, 'wc-arm-r', 1); ?>
-					<?php wc2026_round_col($r16_l, 2, 'wc-arm-r', 1); ?>
-					<?php wc2026_round_col($qf_l,  2, 'wc-arm-r', 1); ?>
-					<div class="wc-rcol">
-						<div class="wc-sf-wrap"><?php wc2026_slot($sf_l, 1); ?></div>
+				<!-- BRACKET -->
+				<div class="wc-bracket-centre">
+					<div class="wc-bracket-rounds">
+
+						<!-- LEFT HALF: R32→R16→QF→SF -->
+						<div class="wc-bhalf">
+							<?php wc2026_round_col($r32_l, 2, 'wc-arm-r', 1); ?>
+							<?php wc2026_round_col($r16_l, 2, 'wc-arm-r', 1); ?>
+							<?php wc2026_round_col($qf_l,  2, 'wc-arm-r', 1); ?>
+							<div class="wc-rcol">
+								<div class="wc-sf-wrap"><?php wc2026_slot($sf_l, 1); ?></div>
+							</div>
+						</div>
+
+						<!-- FINAL + 3RD -->
+						<div class="wc-fin-col">
+							<div class="wc-fin-box">
+								<div class="wc-fl">⚽ Final</div>
+								<div class="wc-fd">26 July 2026</div>
+								<div class="wc-fv">MetLife Stadium, NY/NJ</div>
+								<div class="wc-fin-slot"><?php wc2026_slot($fin); ?></div>
+							</div>
+							<div class="wc-3rd-box">
+								<div class="wc-3l">3rd Place Play-off</div>
+								<div class="wc-3d">25 July 2026</div>
+								<?php wc2026_slot($trd); ?>
+							</div>
+						</div>
+
+						<!-- RIGHT HALF (mirrored): SF→QF→R16→R32 -->
+						<div class="wc-bhalf wc-br">
+							<div class="wc-rcol">
+								<div class="wc-sf-wrap"><?php wc2026_slot($sf_r, 2); ?></div>
+							</div>
+							<?php wc2026_round_col($qf_r,  2, 'wc-arm-l', 3); ?>
+							<?php wc2026_round_col($r16_r, 2, 'wc-arm-l', 5); ?>
+							<?php wc2026_round_col($r32_r, 2, 'wc-arm-l', 9); ?>
+						</div>
+
 					</div>
 				</div>
 
-				<!-- FINAL + 3RD -->
-				<div class="wc-fin-col">
-					<div class="wc-fin-box">
-						<div class="wc-fl">⚽ Final</div>
-						<div class="wc-fd">26 July 2026</div>
-						<div class="wc-fv">MetLife Stadium, NY/NJ</div>
-						<div class="wc-fin-slot"><?php wc2026_slot($fin); ?></div>
-					</div>
-					<div class="wc-3rd-box">
-						<div class="wc-3l">3rd Place Play-off</div>
-						<div class="wc-3d">25 July 2026</div>
-						<?php wc2026_slot($trd); ?>
-					</div>
+				<!-- RIGHT GROUPS G–L -->
+				<div class="wc-gcol">
+					<?php foreach (array('G', 'H', 'I', 'J', 'K', 'L') as $g) :
+						wc2026_render_group_card($g, $standings[$g] ?? array());
+					endforeach; ?>
 				</div>
 
-				<!-- RIGHT HALF (mirrored): SF→QF→R16→R32 -->
-				<div class="wc-bhalf wc-br">
-					<div class="wc-rcol">
-						<div class="wc-sf-wrap"><?php wc2026_slot($sf_r, 2); ?></div>
-					</div>
-					<?php wc2026_round_col($qf_r,  2, 'wc-arm-l', 3); ?>
-					<?php wc2026_round_col($r16_r, 2, 'wc-arm-l', 5); ?>
-					<?php wc2026_round_col($r32_r, 2, 'wc-arm-l', 9); ?>
-				</div>
+			</div><!-- .wc-body -->
 
+			<!-- FOOTER -->
+			<div class="wc-footer">
+				<?php echo esc_html($site_name); ?> &mdash; World Cup 2026 Sweepstake &nbsp;|&nbsp;
+				Generated <?php echo esc_html(current_time('j F Y, H:i')); ?>
 			</div>
-		</div>
 
-		<!-- RIGHT GROUPS G–L -->
-		<div class="wc-gcol">
-			<?php foreach (array('G', 'H', 'I', 'J', 'K', 'L') as $g) :
-				wc2026_render_group_card($g, $standings[$g] ?? array());
-			endforeach; ?>
-		</div>
-
-	</div><!-- .wc-body -->
-
-	<!-- FOOTER -->
-	<div class="wc-footer">
-		<?php echo esc_html( $site_name ); ?> &mdash; World Cup 2026 Sweepstake &nbsp;|&nbsp;
-		Generated <?php echo esc_html(current_time('j F Y, H:i')); ?>
-	</div>
-
-</div><!-- .wc2026-chart -->
+		</div><!-- .wc2026-chart -->
 
 	</div><!-- .wc2026-chart-viewport -->
 </div><!-- .wc2026-chart-zoom-wrap -->

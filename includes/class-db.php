@@ -9,6 +9,7 @@
 if (! defined('ABSPATH')) {
 	exit;
 }
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange
 
 /**
  * Class WC2026_DB
@@ -142,65 +143,65 @@ class WC2026_DB
 		// Countries (name, fifa_code, iso2 for flag, group)
 		$countries_data = array(
 			// Group A
-			array('United States',      'USA', 'us',     'A'),
-			array('Uruguay',             'URU', 'uy',     'A'),
-			array('Algeria',             'ALG', 'dz',     'A'),
-			array('Uzbekistan',          'UZB', 'uz',     'A'),
+			array('Mexico',              'MEX', 'mx',     'A'),
+			array('South Africa',        'ZAF', 'za',     'A'),
+			array('South Korea',         'KOR', 'kr',     'A'),
+			array('Czechia',             'CZE', 'cz',     'A'),
 			// Group B
-			array('Germany',             'DEU', 'de',     'B'),
-			array('Netherlands',         'NED', 'nl',     'B'),
-			array('Czechia',             'CZE', 'cz',     'B'),
-			array('Curaçao',             'CUW', 'cw',     'B'),
+			array('Canada',              'CAN', 'ca',     'B'),
+			array('Bosnia-Herzegovina',  'BIH', 'ba',     'B'),
+			array('Qatar',               'QAT', 'qa',     'B'),
+			array('Switzerland',         'CHE', 'ch',     'B'),
 			// Group C
 			array('Brazil',              'BRA', 'br',     'C'),
-			array('Paraguay',            'PRY', 'py',     'C'),
-			array('Switzerland',         'CHE', 'ch',     'C'),
-			array('Ghana',               'GHA', 'gh',     'C'),
+			array('Morocco',             'MAR', 'ma',     'C'),
+			array('Haiti',               'HTI', 'ht',     'C'),
+			array('Scotland',            'SCO', 'gb-sct', 'C'),
 			// Group D
-			array('Spain',               'ESP', 'es',     'D'),
-			array('Croatia',             'HRV', 'hr',     'D'),
-			array('Morocco',             'MAR', 'ma',     'D'),
-			array('Japan',               'JPN', 'jp',     'D'),
+			array('United States',       'USA', 'us',     'D'),
+			array('Paraguay',            'PRY', 'py',     'D'),
+			array('Australia',           'AUS', 'au',     'D'),
+			array('Türkiye',             'TUR', 'tr',     'D'),
 			// Group E
-			array('France',              'FRA', 'fr',     'E'),
-			array('Belgium',             'BEL', 'be',     'E'),
-			array('Canada',              'CAN', 'ca',     'E'),
-			array('Cabo Verde',          'CPV', 'cv',     'E'),
+			array('Germany',             'DEU', 'de',     'E'),
+			array('Curaçao',             'CUW', 'cw',     'E'),
+			array('Côte d\'Ivoire',      'CIV', 'ci',     'E'),
+			array('Ecuador',             'ECU', 'ec',     'E'),
 			// Group F
-			array('Portugal',            'POR', 'pt',     'F'),
-			array('Australia',           'AUS', 'au',     'F'),
-			array('DR Congo',            'COD', 'cd',     'F'),
-			array('Qatar',               'QAT', 'qa',     'F'),
+			array('Netherlands',         'NED', 'nl',     'F'),
+			array('Japan',               'JPN', 'jp',     'F'),
+			array('Sweden',              'SWE', 'se',     'F'),
+			array('Tunisia',             'TUN', 'tn',     'F'),
 			// Group G
-			array('Argentina',           'ARG', 'ar',     'G'),
-			array('Colombia',            'COL', 'co',     'G'),
-			array('South Korea',         'KOR', 'kr',     'G'),
-			array('Ecuador',             'ECU', 'ec',     'G'),
+			array('Belgium',             'BEL', 'be',     'G'),
+			array('Egypt',               'EGY', 'eg',     'G'),
+			array('Iran',                'IRN', 'ir',     'G'),
+			array('New Zealand',         'NZL', 'nz',     'G'),
 			// Group H
-			array('England',             'ENG', 'gb-eng', 'H'),
-			array('Iran',                'IRN', 'ir',     'H'),
-			array('Senegal',             'SEN', 'sn',     'H'),
-			array('Tunisia',             'TUN', 'tn',     'H'),
+			array('Spain',               'ESP', 'es',     'H'),
+			array('Cabo Verde',          'CPV', 'cv',     'H'),
+			array('Saudi Arabia',        'KSA', 'sa',     'H'),
+			array('Uruguay',             'URU', 'uy',     'H'),
 			// Group I
-			array('Mexico',              'MEX', 'mx',     'I'),
-			array('South Africa',        'ZAF', 'za',     'I'),
-			array('Norway',              'NOR', 'no',     'I'),
+			array('France',              'FRA', 'fr',     'I'),
+			array('Senegal',             'SEN', 'sn',     'I'),
 			array('Iraq',                'IRQ', 'iq',     'I'),
+			array('Norway',              'NOR', 'no',     'I'),
 			// Group J
-			array('Sweden',              'SWE', 'se',     'J'),
+			array('Argentina',           'ARG', 'ar',     'J'),
+			array('Algeria',             'ALG', 'dz',     'J'),
 			array('Austria',             'AUT', 'at',     'J'),
-			array('Bosnia-Herzegovina',  'BIH', 'ba',     'J'),
-			array('New Zealand',         'NZL', 'nz',     'J'),
+			array('Jordan',              'JOR', 'jo',     'J'),
 			// Group K
-			array('Scotland',            'SCO', 'gb-sct', 'K'),
-			array('Côte d\'Ivoire',      'CIV', 'ci',     'K'),
-			array('Jordan',              'JOR', 'jo',     'K'),
-			array('Saudi Arabia',        'KSA', 'sa',     'K'),
+			array('Portugal',            'POR', 'pt',     'K'),
+			array('DR Congo',            'COD', 'cd',     'K'),
+			array('Uzbekistan',          'UZB', 'uz',     'K'),
+			array('Colombia',            'COL', 'co',     'K'),
 			// Group L
+			array('England',             'ENG', 'gb-eng', 'L'),
+			array('Croatia',             'HRV', 'hr',     'L'),
+			array('Ghana',               'GHA', 'gh',     'L'),
 			array('Panama',              'PAN', 'pa',     'L'),
-			array('Haiti',               'HTI', 'ht',     'L'),
-			array('Türkiye',             'TUR', 'tr',     'L'),
-			array('Egypt',               'EGY', 'eg',     'L'),
 		);
 
 		foreach ($countries_data as $c) {

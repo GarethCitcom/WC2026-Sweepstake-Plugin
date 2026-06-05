@@ -58,8 +58,9 @@
 		document.body.classList.add( 'wc2026-popup-open' );
 
 		var formData = new FormData();
-		formData.append( 'action', 'wc2026_staff_popup' );
-		formData.append( 'slug',   slug );
+		formData.append( 'action',   'wc2026_staff_popup' );
+		formData.append( 'slug',     slug );
+		formData.append( '_wpnonce', wc2026.nonce );
 
 		fetch( wc2026.ajax_url, { method: 'POST', body: formData } )
 			.then( function ( r ) { return r.json(); } )

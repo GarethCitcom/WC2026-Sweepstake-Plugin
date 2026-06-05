@@ -38,6 +38,7 @@ function wc2026_output_staff_popup_modal() {
 
 // AJAX: return staff profile HTML for the popup.
 function wc2026_ajax_staff_popup() {
+	check_ajax_referer( 'wc2026_staff_popup' );
 	$slug = isset( $_POST['slug'] ) ? sanitize_key( wp_unslash( $_POST['slug'] ) ) : '';
 	if ( empty( $slug ) ) {
 		wp_send_json_error( array( 'message' => 'Missing slug.' ), 400 );
@@ -120,7 +121,7 @@ function wc2026_shortcode_wall_chart_full( $atts ) {
 		'wc2026-montserrat',
 		'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap',
 		array(),
-		null
+		false
 	);
 	$wc_data = wc2026_wallchart_data();
 	ob_start();

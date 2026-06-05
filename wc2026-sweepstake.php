@@ -84,7 +84,10 @@ function wc2026_enqueue_public_assets()
 	wp_localize_script(
 		'wc2026-sweepstake',
 		'wc2026',
-		array('ajax_url' => admin_url('admin-ajax.php'))
+		array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'nonce'    => wp_create_nonce( 'wc2026_staff_popup' ),
+		)
 	);
 }
 add_action('wp_enqueue_scripts', 'wc2026_enqueue_public_assets');
