@@ -87,8 +87,6 @@ $tabs = array(
 								</tbody>
 							</table>
 						</div>
-						<br>
-						<p class="text-muted" style="font-size:0.8em;">Martin & Kate have a special prize for the top scorer! (they just don't know that yet 😉) and Soph said she will share an extra £100k when she wins the Lotto 😂</p>
 					</div>
 				</div>
 			</div>
