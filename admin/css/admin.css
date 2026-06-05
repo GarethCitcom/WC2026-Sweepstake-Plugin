@@ -1,0 +1,244 @@
+/* WC2026 Admin Styles */
+
+.wc2026-admin-wrap h1 {
+	margin-bottom: 1rem;
+}
+
+/* Staff table */
+.wc2026-staff-table .wc2026-staff-avatar {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	object-fit: cover;
+	display: block;
+}
+
+.wc2026-colour-swatch {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border-radius: 3px;
+	vertical-align: middle;
+	border: 1px solid #ccc;
+	margin-right: 4px;
+}
+
+.wc2026-colour-picker {
+	width: 38px;
+	height: 30px;
+	padding: 0;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.wc2026-colour-form,
+.wc2026-staff-table td form {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin: 2px 0;
+}
+
+/* Filter bar */
+.wc2026-filter-bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: center;
+	margin-bottom: 1rem;
+	padding: 10px 14px;
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.wc2026-filter-bar label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-weight: 500;
+}
+
+/* Scores table */
+.wc2026-scores-table .col-score {
+	width: 130px;
+	white-space: nowrap;
+}
+
+.wc2026-scores-table .col-team {
+	min-width: 140px;
+}
+
+.wc2026-score-input {
+	width: 52px !important;
+	text-align: center;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.wc2026-score-sep {
+	font-weight: 700;
+	font-size: 1.1rem;
+	margin: 0 4px;
+}
+
+.wc2026-flag-sm {
+	height: 18px;
+	vertical-align: middle;
+	margin-right: 5px;
+	border: 1px solid #eee;
+}
+
+.wc2026-match-row.is-finished {
+	background: #f0fdf4;
+}
+
+.wc2026-group-badge {
+	display: inline-block;
+	background: #0073aa;
+	color: #fff;
+	font-size: 10px;
+	padding: 1px 5px;
+	border-radius: 10px;
+	margin-left: 4px;
+	vertical-align: middle;
+}
+
+/* ── Staff table actions ──────────────────────────────────────── */
+.wc2026-actions-cell {
+	white-space: nowrap;
+}
+
+.wc2026-countries-cell {
+	max-width: 320px;
+	font-size: 12px;
+	color: #555;
+}
+
+button.wc2026-confirm-delete {
+	color: #a00 !important;
+}
+button.wc2026-confirm-delete:hover {
+	background: #fdf2f2 !important;
+	border-color: #c00 !important;
+	color: #c00 !important;
+}
+
+/* ── Modal overlay ───────────────────────────────────────────── */
+.wc2026-modal {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, .55);
+	z-index: 100100;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 60px 16px 32px;
+	overflow-y: auto;
+}
+
+.wc2026-modal-inner {
+	background: #fff;
+	border-radius: 6px;
+	box-shadow: 0 8px 40px rgba(0, 0, 0, .28);
+	padding: 28px 32px 24px;
+	width: 100%;
+	max-width: 960px;
+	position: relative;
+}
+
+.wc2026-modal-close {
+	position: absolute;
+	top: 12px;
+	right: 14px;
+	background: none;
+	border: none;
+	font-size: 24px;
+	line-height: 1;
+	cursor: pointer;
+	color: #666;
+	padding: 2px 6px;
+}
+.wc2026-modal-close:hover { color: #000; }
+
+.wc2026-modal-footer {
+	margin-top: 20px;
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+/* ── Countries grid in modal ─────────────────────────────────── */
+.wc2026-countries-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 14px 20px;
+	margin-top: 6px;
+}
+
+.wc2026-group-col {
+	min-width: 0;
+}
+
+.wc2026-group-header {
+	font-weight: 600;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: .4px;
+	color: #888;
+	padding-bottom: 5px;
+	margin-bottom: 4px;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.wc2026-country-label {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	padding: 3px 2px;
+	cursor: pointer;
+	font-size: 13px;
+	border-radius: 3px;
+	transition: background .1s;
+}
+.wc2026-country-label:hover {
+	background: #f0f7fd;
+}
+.wc2026-country-label.is-other-owner {
+	opacity: .55;
+}
+
+.wc2026-flag-xs {
+	height: 13px;
+	flex-shrink: 0;
+	border: 1px solid #e0e0e0;
+}
+
+.wc2026-country-name {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.wc2026-country-owner {
+	font-size: 11px;
+	color: #aaa;
+	flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 782px) {
+	.wc2026-scores-table thead {
+		display: none;
+	}
+	.wc2026-scores-table tr {
+		display: block;
+		border-bottom: 2px solid #ddd;
+		margin-bottom: 8px;
+	}
+	.wc2026-scores-table td {
+		display: block;
+	}
+}
