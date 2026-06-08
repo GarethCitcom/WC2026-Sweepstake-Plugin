@@ -1,0 +1,10 @@
+{
+  "name": "WC2026 Sweepstake",
+  "slug": "wc2026-sweepstake",
+  "version": "1.2.1",
+  "author": "<a href=\"https://citcom.co.uk\">CitCom</a>",
+  "details_url": "https://citcom.co.uk/wp-plugins/wc2026-sweepstake",
+  "download_url": "https://citcom.co.uk/wp-plugins/wc2026-sweepstake/wc2026-sweepstake.zip",
+  "description": "Internal World Cup 2026 sweepstake — wall chart, fixtures, scores, and leaderboard.",
+  "changelog": "<h4>1.2.1</h4><ul><li>Initial self-hosted release.</li></ul>"
+}

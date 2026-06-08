@@ -788,7 +788,7 @@ if (! $css_done) :
 <?php endif; ?>
 
 <div class="wc2026-chart-zoom-wrap">
-	<div class="wc2026-zoom-bar">
+	<div class="wc2026-zoom-bar" style="display:none;">
 		<button type="button" class="wc2026-zoom-btn" data-zoom="fit"><?php esc_html_e('Fit', 'wc2026-sweepstake'); ?></button>
 		<div class="wc2026-zoom-stepper">
 			<button type="button" class="wc2026-zoom-btn" data-zoom="out" aria-label="<?php esc_attr_e('Zoom out', 'wc2026-sweepstake'); ?>">&#8722;</button>

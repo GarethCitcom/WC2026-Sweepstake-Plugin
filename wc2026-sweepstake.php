@@ -4,7 +4,7 @@
  * Plugin Name: WC2026 Sweepstake
  * Plugin URI:  https://citcom.co.uk/wp-plugins/wc2026-sweepstake
  * Description: Internal World Cup 2026 sweepstake — wall chart, fixtures, scores, and leaderboard.
- * Version:     1.0.0
+ * Version:     1.2.1
  * Author:      CitCom.
  * Author URI:  https://citcom.co.uk
  * License:     GPL-2.0-or-later
@@ -21,6 +21,7 @@ define('WC2026_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('WC2026_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 // Core includes.
+require_once WC2026_PLUGIN_DIR . 'includes/class-updater.php';
 require_once WC2026_PLUGIN_DIR . 'includes/class-db.php';
 require_once WC2026_PLUGIN_DIR . 'includes/class-staff.php';
 require_once WC2026_PLUGIN_DIR . 'includes/class-countries.php';
@@ -39,6 +40,13 @@ if (is_admin()) {
 
 // Public shortcodes.
 require_once WC2026_PLUGIN_DIR . 'public/shortcodes.php';
+
+// Self-hosted update checker.
+( new WC2026_Updater(
+	WC2026_PLUGIN_FILE,
+	'https://citcom.co.uk/wp-plugins/wc2026-sweepstake/update.json',
+	WC2026_VERSION
+) )->init();
 
 register_activation_hook(__FILE__, array('WC2026_DB', 'install'));
 register_deactivation_hook(__FILE__, 'wc2026_on_deactivate');
